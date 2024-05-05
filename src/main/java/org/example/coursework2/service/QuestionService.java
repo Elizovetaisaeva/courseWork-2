@@ -15,3 +15,4 @@ public interface QuestionService {
 
     Question getRandom();
 }
+
