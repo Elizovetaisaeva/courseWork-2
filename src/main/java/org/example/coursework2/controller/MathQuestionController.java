@@ -23,6 +23,7 @@ public class MathQuestionController {
         return questionService.add(question, answer);
     }
 
+    @GetMapping
     public Collection<Question> getAll() {
         return questionService.getAll();
     }

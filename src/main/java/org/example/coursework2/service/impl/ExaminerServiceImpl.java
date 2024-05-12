@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
-public class ExaminerServiceImpl implements ExaminerService {
+public abstract class ExaminerServiceImpl implements ExaminerService {
     private static final Random random = new Random();
 
     private final List<QuestionService> questionServices;
@@ -28,16 +28,12 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestion(int amount) {
-        return List.of();
-    }
-
-    @Override
-    public Collection<Question> getquestion(int amount) {
                 return Stream.generate(this::getRandomQuestion)
                 .distinct()
                 .limit(amount)
                 .collect(Collectors.toList());
     }
+
     private Question getRandomQuestion() {
         int ind = random.nextInt(questionServices.size());
         return questionServices.get(ind).getRandom();

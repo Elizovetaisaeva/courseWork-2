@@ -12,7 +12,8 @@ import java.util.*;
 public class JavaQuestionService implements QuestionService {
 
     private final Random random = new Random();
-    private QuestionRepository questionRepository;
+
+    private final QuestionRepository questionRepository;
 
     public JavaQuestionService(JavaQuestionRepository  questionRepository) {
         this.questionRepository = questionRepository;
@@ -20,18 +21,18 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question add(Question question) {
-        return null;
+        return questionRepository.add(question);
     }
 
     @Override
     public Question add(String question, String answer) {
-        return questionRepository.aaddQuestion(new Question(question, answer));
+        return questionRepository.add(new Question(question, answer));
 
     }
 
     @Override
     public Question remove(Question question) {
-        return questionRepository.removeQuestion(question);
+        return questionRepository.remove(question);
 
     }
 

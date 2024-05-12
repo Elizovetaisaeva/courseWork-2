@@ -11,26 +11,17 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class JavaQuestionRepository implements QuestionRepository {
+public abstract class JavaQuestionRepository implements QuestionRepository {
     private final List<Question> questions = new ArrayList<>();
 
     @Override
-    public Question aaddQuestion(Question question) {
-        return null;
-    }
-
-    @Override
-    public Question removeQuestion(Question question) {
-        return null;
-    }
-
-    @Override
     public Question add(Question question) {
-        if (questions.contains(question)){
+        if (questions.contains(question)) {
             throw new NotUniqueQuestionException();
         }
         questions.add(question);
         return question;
+
     }
 
     @Override
